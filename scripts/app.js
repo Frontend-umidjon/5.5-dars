@@ -73,10 +73,6 @@ btnSeemore.addEventListener("click", ()=>{
     fetchData(`/products?limit=${perPageCount}&skip=${offset * perPageCount}`)
 })
 
-
-
-
-
 async function fetchCategory(endpoint){
     const response = await fetch(`${BASE_URL}${endpoint}`)
     response
@@ -84,16 +80,6 @@ async function fetchCategory(endpoint){
         .then(res => {
             createCategory(res);
         })
-}
-
-function createCategory(data){
-    data.forEach((category)=> {
-        const listEl = document.createElement("li")
-        listEl.className = "item"
-        listEl.dataset.category = `/products/category/${category}`
-        listEl.textContent = category
-        collectionEl.appendChild(listEl)
-    })
 }
 
 function createCategory(data) {
