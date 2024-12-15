@@ -95,3 +95,19 @@ function createCategory(data){
         collectionEl.appendChild(listEl)
     })
 }
+
+function createCategory(data) {
+    data.forEach((category) => {
+        const listEl = document.createElement("li");
+        listEl.className = "item";
+        listEl.dataset.category = `/products/category/${category}`;
+        listEl.textContent = category;
+        listEl.addEventListener("click", () => {
+            wrapperEl.innerHTML = ""; 
+            createLoading(perPageCount); 
+            fetchData(listEl.dataset.category); 
+        });
+
+        collectionEl.appendChild(listEl);
+    });
+}

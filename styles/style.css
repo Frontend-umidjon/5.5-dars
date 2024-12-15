@@ -68,6 +68,7 @@ body {
     white-space: nowrap;
     scrollbar-width: thin;
     scrollbar-color: #00ffe5 rgba(255, 255, 255, 0.05);
+    text-transform: capitalize;
 }
 
 .collection::-webkit-scrollbar {
