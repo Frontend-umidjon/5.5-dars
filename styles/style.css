@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1f1f1f, #3d3d3d);
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ffe5;
+    text-shadow: 0 0 10px #00ffe5;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #00ffe5;
+}
+
+.collection {
+    margin: 6rem 0 2rem;
+    padding: 0;
+    list-style: none;
+    width: 80%;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #00ffe5 rgba(255, 255, 255, 0.05);
+}
+
+.collection::-webkit-scrollbar {
+    height: 8px;
+}
+
+.collection::-webkit-scrollbar-thumb {
+    background: #00ffe5;
+    border-radius: 10px;
+}
+
+.collection::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.collection li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 120px;
+    flex: 0 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.collection li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.card p {
+    color: #00ffe5;
+    font-weight: bold;
+}
+
+.card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #00ffe5;
+    color: #1f1f1f;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.card button:hover {
+    background: #00c9b3;
+}
+
+.loading {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.loading__item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+.loading__image {
+    height: 150px;
+    background: #444;
+    border-radius: 10px;
+}
+
+.loading__title {
+    height: 20px;
+    background: #444;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.to-left {
+    animation: loading-left 1.5s infinite;
+}
+
+@keyframes loading-left {
+    0%, 100% {
+        transform: translateX(-10%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        background-color: #444;
+    }
+    50% {
+        background-color: #555;
+    }
+}
+
+.btn__seemore {
+    padding: 0.8rem 1.5rem;
+    background: #00ffe5;
+    color: #1f1f1f;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 255, 229, 0.3);
+    margin-top: 1rem;
+}
+
+.btn__seemore:hover {
+    background: #00c9b3;
+}
+
+.btn__seemore:active {
+    background: #00a393;
+    box-shadow: 0 2px 5px rgba(0, 255, 229, 0.2);
+}
