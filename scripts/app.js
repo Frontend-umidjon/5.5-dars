@@ -22,6 +22,11 @@ async function fetchData(endpoint) {
             loadingEl.style.display = "none";
             btnSeemore.removeAttribute("disabled");
             btnSeemore.textContent = "See more";
+            if (total <= perPageCount + offset * perPageCount) {
+                btnSeemore.style.display = "none";
+            }else{
+                btnSeemore.style.display = "block";
+            }
         });
 }
 
@@ -95,8 +100,9 @@ function createCategory(data) {
             offset = 0;
             currentCategory = listEl.dataset.category;
             fetchData(`${currentCategory}?limit=${perPageCount}`);
-            btnSeemore.style.display = "block";
         });
         collectionEl.appendChild(listEl);
     });
 }
+
+
