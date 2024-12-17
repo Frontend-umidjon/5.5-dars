@@ -87,6 +87,7 @@ body {
 .collection li {
     background: rgba(255, 255, 255, 0.05);
     padding: 1rem;
+    margin: 0.5rem 0;
     border-radius: 8px;
     min-width: 120px;
     flex: 0 0 auto;
@@ -98,9 +99,21 @@ body {
 }
 
 .collection li:hover {
-    transform: translateY(-10px);
+    background-color: #00ffe5;
+    color: #1f1f1f;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
+
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
 
 .wrapper {
     width: 90%;

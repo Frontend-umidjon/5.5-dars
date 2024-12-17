@@ -9,26 +9,22 @@ let total = 0;
 let offset = 0;
 let currentCategory = null;
 
-async function fetchData(endpoint) {
+const fetchData = async (endpoint) => {
     const response = await fetch(`${BASE_URL}${endpoint}`);
     response
         .json()
         .then((res) => {
             createCard(res);
             total = res.total;
+            btnSeemore.style.display = total <= perPageCount + offset * perPageCount ? "none" : "block";
         })
         .catch((err) => console.log(err))
         .finally(() => {
             loadingEl.style.display = "none";
             btnSeemore.removeAttribute("disabled");
             btnSeemore.textContent = "See more";
-            if (total <= perPageCount + offset * perPageCount) {
-                btnSeemore.style.display = "none";
-            }else{
-                btnSeemore.style.display = "block";
-            }
         });
-}
+};
 
 window.addEventListener("load", () => {
     createLoading(perPageCount);
@@ -36,7 +32,7 @@ window.addEventListener("load", () => {
     fetchCategory("/products/category-list");
 });
 
-function createLoading(n) {
+const createLoading = (n) => {
     loadingEl.style.display = "grid";
     loadingEl.innerHTML = null;
     Array(n).fill().forEach(() => {
@@ -49,21 +45,21 @@ function createLoading(n) {
         `;
         loadingEl.appendChild(div);
     });
-}
+};
 
-function createCard(data) {
+const createCard = (data) => {
     data.products.forEach(product => {
         const divEl = document.createElement("div");
         divEl.className = "card";
         divEl.innerHTML = `
-            <img src=${product.thumbnail} alt="rasm">
+            <img src=${product.thumbnail} alt="rasm" data-id=${product.id}>
             <h3>${product.title}</h3>
             <p>${product.price} USD</p>
             <button>Buy now</button>
         `;
         wrapperEl.appendChild(divEl);
     });
-}
+};
 
 btnSeemore.addEventListener("click", () => {
     btnSeemore.setAttribute("disabled", true);
@@ -73,22 +69,17 @@ btnSeemore.addEventListener("click", () => {
     const endpoint = currentCategory
         ? `${currentCategory}?limit=${perPageCount}&skip=${offset * perPageCount}`
         : `/products?limit=${perPageCount}&skip=${offset * perPageCount}`;
-    if (total <= perPageCount + offset * perPageCount) {
-        btnSeemore.style.display = "none";
-    }
     fetchData(endpoint);
 });
 
-async function fetchCategory(endpoint) {
+const fetchCategory = async (endpoint) => {
     const response = await fetch(`${BASE_URL}${endpoint}`);
     response
         .json()
-        .then(res => {
-            createCategory(res);
-        });
-}
+        .then(res => createCategory(res));
+};
 
-function createCategory(data) {
+const createCategory = (data) => {
     data.forEach((category) => {
         const listEl = document.createElement("li");
         listEl.className = "item";
@@ -103,6 +94,11 @@ function createCategory(data) {
         });
         collectionEl.appendChild(listEl);
     });
-}
+};
 
-
+wrapperEl.addEventListener("click", (e) => {
+    if (e.target.tagName === "IMG") {
+        open(`./pages/product.html?id=${e.target.dataset.id}`, "_self");
+        console.log(e.target.dataset.id);
+    }
+});

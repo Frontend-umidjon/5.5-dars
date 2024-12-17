@@ -225,3 +225,24 @@ body {
 .footer-bottom p {
   margin: 0;
 }
+
+.profile-card__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.profile-card__actions button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile-card__actions button:hover {
+  background: #0bb9d6;
+  color: #fff;
+}

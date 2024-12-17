@@ -1,7 +1,10 @@
 const Base_Url = "https://dummyjson.com"
 const PostsEl = document.querySelector(".posts")
+const btnSeemore = document.querySelector(".btn__seemore")
 
 const loadingEl = document.querySelector(".loading");
+let total = 0;
+let offset = 0;
 
 async function fetchData(endpoint) {
     const response = await fetch(`${Base_Url}${endpoint}`)
@@ -9,11 +12,15 @@ async function fetchData(endpoint) {
         .json()
         .then(res => createPosts(res))
         .catch(error => console.log(error))
-        .finally(() => loadingEl.style.display = "none")
+        .finally(() => {
+            loadingEl.style.display = "none"
+            btnSeemore.removeAttribute("disabled")
+            btnSeemore.textContent = "See more"
+          })
     
 }
 
-fetchData("/posts")
+fetchData("/posts?limit=8")
 
 
 function createPosts(data) {    
@@ -47,7 +54,18 @@ function createPosts(data) {
                 <span class="post-card__views"><i class="fa-regular fa-eye"></i> ${post.views}</span>
                 <span class="post-card__userId">ID : ${post.userId}</span>
             </div>
+             
         `
         PostsEl.appendChild(postEl)
     })
+
+    btnSeemore.addEventListener("click", () => {
+        btnSeemore.setAttribute("disabled", true);
+        btnSeemore.textContent = "Loading...";
+        offset++;
+        const endpoint = `/posts?limit=8&skip=${offset * 8}`;
+        fetchData(endpoint);
+    });
+
+
 }       

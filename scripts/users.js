@@ -1,8 +1,11 @@
 const Base_Url = "https://dummyjson.com"
 const ProfileCards = document.querySelector(".profile-cards")
+const btnSeemore = document.querySelector(".btn__seemore")
 
 const loadingEl = document.querySelector(".loading")
 const loader = document.querySelector(".loader")
+let total = 0;
+let offset = 0;
 
 async function fetchData(endpoint) {
   const response =  await fetch(`${Base_Url}${endpoint}`)
@@ -10,10 +13,14 @@ async function fetchData(endpoint) {
     .json()
     .then(res => createProfileCard(res))
     .catch(error => console.log(error))
-    .finally(() => loadingEl.style.display = "none")
+    .finally(() => {
+      loadingEl.style.display = "none"
+      btnSeemore.removeAttribute("disabled")
+      btnSeemore.textContent = "See more"
+    })
 }
 
-fetchData("/users")
+fetchData("/users?limit=8")
 
 function createProfileCard(data) {
     data.users.forEach((user) => {
@@ -33,10 +40,22 @@ function createProfileCard(data) {
           </p>
           <a href="#" class="profile-card__btn" id="${user.id}">About Me</a>
         </div>
+
+         
       `;
     ProfileCards.appendChild(profileCard)
   })
+  btnSeemore.addEventListener("click", () => {
+    btnSeemore.setAttribute("disabled", true);
+    btnSeemore.textContent = "Loading...";
+    offset++;
+    const endpoint = `/users?limit=8&skip=${offset * 8}`;
+    fetchData(endpoint);
+});
 
+  
+
+    
 }
 
 
