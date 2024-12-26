@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Wishlist</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/wishlist.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <h1>Loading...</h1>
+    </div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="../index.html" class="logo">DummyJSON</a>
+            <ul class="nav-links">
+                <li><a href="./index.html">Products</a></li>
+                <li><a href="./pages/users.html">Users</a></li>
+                <li><a href="./pages/posts.html">Posts</a></li>
+                <li class="wishlist-nav"><a href="#">Wishlist <span class="wishlist-count">0</span></a></li>
+            </ul>
+        </nav>
+        <div class="wishlist">
+           
+           
+        </div>
+      
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">DummyJSON</div>
+            <ul class="footer-links">
+                <li><a href="./index.html">Products</a></li>
+                <li><a href="./pages/users.html">Users</a></li>
+                <li><a href="./pages/posts.html">Posts</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DummyJSON. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            const container = document.querySelector('.container');
+            loadingScreen.style.display = 'none';
+            container.style.visibility = 'visible';
+        });
+    </script>
+
+    <script src="../scripts/wishlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#loading-screen h1 {
+    font-size: 2rem;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    visibility: hidden;
+}
+
+
+
+.wishlist {
+    margin-top: 100px;  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+.wishlist-nav{
+    position: relative;
+}
+
+.item {
+    min-width: 400px;
+
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00d4ff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px #00d4ff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00d4ff;
+}
+
+.item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.item h2 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+}
+
+.item p {
+    font-size: 1rem;
+    margin: 0 0 15px;
+}
+
+.add-to-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background: #00d4ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #000;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.add-to-cart:hover {
+    background: #009ec3;
+    box-shadow: 0 0 15px #00d4ff;
+}
+
+.remove-from-wishlist {  
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background: #ff0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #000;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.remove-from-wishlist:hover {
+    background: #c30000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
